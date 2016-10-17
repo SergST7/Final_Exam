@@ -1,0 +1,43 @@
+{
+  "name": "final_exam",
+  "version": "1.0.0",
+  "description": "GOIT Final Exam FrontEnd",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergST7/Final_Exam.git"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "JS"
+  ],
+  "author": "Sergey Stelmakh <stelmakhserg@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergST7/Final_Exam/issues"
+  },
+  "homepage": "https://github.com/SergST7/Final_Exam#readme",
+  "devDependencies": {
+    "browser-sync": "^2.17.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.10"
+  },
+  "dependencies": {
+    "del": "^2.2.2",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-pngquant": "^5.0.0"
+  }
+}
