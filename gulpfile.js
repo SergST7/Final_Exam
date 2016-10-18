@@ -12,6 +12,7 @@ var plumber = require('gulp-plumber'); //обработчик ошибок
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var jpegtran = require('imagemin-jpegtran');
+var cache = require('gulp-cache');           //кеширование изображений
 
 var sourcemaps = require('gulp-sourcemaps');
 var clean = require('del');                       //очистка папки
@@ -19,21 +20,12 @@ var autoprefixer = require('gulp-autoprefixer');  // вендорные преф
 var minifyCss = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var rigger = require('gulp-rigger');
-
+var runSequence = require('run-sequence'); //синхронный запуск задач
 
 // var concat = require('gulp-concat');
 // var minify = require('gulp-minify');
-//
-
-//     concat = require('gulp-concat'),
-//
-//
-//
-//
-//
 //     babel = require("gulp-babel"),
 //     spritesmith = require('gulp.spritesmith');
-
 
 //  объект с данными о путях
 var PATHS = {
@@ -98,9 +90,10 @@ gulp.task('watch', ['browser-sync'], function () {
     gulp.watch([PATHS.watch.sass], ['sass']); // Наблюдение за sass файлами в папке sass
     gulp.watch([PATHS.watch.html], ['html']);
     gulp.watch([PATHS.watch.styles], ['styles']);
-    // gulp.watch([PATHS.watch.scripts], ['scripts']);
-    // gulp.watch([PATHS.watch.images], ['images']);
+    gulp.watch([PATHS.watch.scripts], ['scripts']);
+    gulp.watch([PATHS.watch.images], ['images']);
 });
+
 
 //BUILD TASKS
 
@@ -122,7 +115,7 @@ gulp.task('html', function () {
 gulp.task('images', function () {
     return gulp.src(PATHS.src.images)
         .pipe(plumber())
-        .pipe(imagemin({
+        .pipe(cache(imagemin({
             progressive: true,
             svgoPlugins: [{
                 removeViewBox: false
@@ -130,7 +123,7 @@ gulp.task('images', function () {
             verbose: true,
             use: [pngquant(), jpegtran()],
             interlaced: true
-        }))
+        })))
         .pipe(gulp.dest(PATHS.build.images))
         .pipe(browserSync.reload({stream: true})); // перезагрузим сервер
 });
@@ -156,16 +149,15 @@ gulp.task('scripts', function () {
         .pipe(plumber())
         .pipe(rigger()) //Прогоним через rigger
         .pipe(sourcemaps.init()) //Инициализируем sourcemap
-        .pipe(uglify()) //Сожмем наш js
+        .pipe(uglify()) //минификация  js
         .pipe(sourcemaps.write()) //Пропишем карты
         .pipe(gulp.dest(PATHS.build.scripts))
         .pipe(browserSync.reload({stream: true})); // перезагрузим сервер
 });
 
 // задача сборки проекта, до запуска build будут выполнены задачи из массива
-gulp.task('build', ['clean', 'fonts', 'html', 'styles', 'images', 'scripts'], function () {
-    console.log('builded - ok!');
+gulp.task('build', function () {
+    runSequence('clean', 'sass',
+        ['fonts', 'html', 'styles', 'images', 'scripts']
+    );
 });
-
-
-
