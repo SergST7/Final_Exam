@@ -52,8 +52,9 @@ var PATHS = {
     watch: {
         html: 'src/**/*.html',
         sass: 'src/styles/sass/*.sass',
-        styles: 'src/styles/**/*.css',
-        scripts: 'src/scripts/**/*.js'
+        styles: 'src/styles/css/*.css',
+        scripts: 'src/scripts/**/*.js',
+        images: 'src/img/**/*'
     }
 };
 
@@ -80,7 +81,7 @@ gulp.task('browser-sync', function () { // Создаем таск browser-sync
 
 //SASS
 gulp.task('sass', function () { // Создаем таск "sass"
-    return gulp.src([PATHS.watch.sass]) // Берем источник
+         gulp.src([PATHS.watch.sass]) // Берем источник
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
         .pipe(gulp.dest('src/styles/css/')); // Выгружаем результата в папку css
 });

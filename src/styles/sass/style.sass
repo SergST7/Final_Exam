@@ -3,9 +3,122 @@ $headFontBlack: #333333
 $headFontWhite: #fff
 
 
+// Центрирование блока по горизонтали и по вертикали
+=vcenter
+  position: absolute
+  top: 50%
+  left: 50%
+  +translate(-50%,-50%)
+
+=clr
+  &:after
+    content: " "
+    display: table
+    clear: both
+  *zoom: 1
+
+.clr
+  +clr
+
+//import
+@import reset
+@import fonts
+
+*
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
 
 body
-  color: #283df5
-  background-color: #efaa4e
-  border: 1px solid wheat
+  margin: 0
+  padding: 0
+  font-family: 'montserrat', sans-serif
+  color: $headFontWhite
+
+.wrapper
+  margin: 0 auto
+  max-width: 940px
+
+
+.header
+  max-width: 1440px
+  background: url(../../img/bg-header.jpg) no-repeat center
+  height: 700px
+  margin: 0 auto
+  padding-top: 39px
+  text-align: center
+
+  &__logo
+    float: left
+    &>a
+      display: block
+      font-size: 21px
+      text-decoration: none
+      text-transform: uppercase
+      color: $headFontWhite
+      //font-family: 'montserrat', sans-serif
+      font-weight: bold
+      margin-top: 9px
+
+  &__login-box
+    float: right
+  &__login
+    display: inline-block
+    font-size: 14px
+    text-decoration: none
+    color: $headFontWhite
+    //font-family: 'montserrat', sans-serif
+    font-weight: bold
+    padding: 8px  16px
+  &__signup
+    @extend .header__login
+    border: 2px solid $headFontWhite
+    border-radius: 20px
+
+  &__title
+    font-size: 52px
+    text-transform: uppercase
+    text-align: center
+    margin-top: 145px
+    margin-bottom: 27px
+    line-height: 60px
+
+
+  &__text
+    text-align: center
+    font-size: 24px
+    font-family: 'roboto'
+    margin-bottom: 38px
+
+  &__btn
+    display: inline-block
+    background-color: $btnRed
+    font-size: 14px
+    padding: 13px 24px
+    border-radius: 20px
+    text-decoration: none
+    color: $headFontWhite
+
+.slider
+  padding-top: 97px
+
+  &__title
+    text-align: center
+    font-weight: bold
+    font-size: 22px
+    color: $headFontBlack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
