@@ -86,6 +86,82 @@ table {
   font-style: normal;
 }
 
+/* 
+ * 	Core Owl Carousel CSS File
+ *	v1.3.3
+ */
+/* clearfix */
+.owl-carousel .owl-wrapper:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+/* display none until init */
+.owl-carousel {
+  display: none;
+  position: relative;
+  width: 100%;
+  -ms-touch-action: pan-y;
+}
+
+.owl-carousel .owl-wrapper {
+  display: none;
+  position: relative;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}
+
+.owl-carousel .owl-wrapper-outer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.owl-carousel .owl-wrapper-outer.autoHeight {
+  -webkit-transition: height 500ms ease-in-out;
+  -moz-transition: height 500ms ease-in-out;
+  -ms-transition: height 500ms ease-in-out;
+  -o-transition: height 500ms ease-in-out;
+  transition: height 500ms ease-in-out;
+}
+
+.owl-carousel .owl-item {
+  float: left;
+}
+
+.owl-controls .owl-page,
+.owl-controls .owl-buttons div {
+  cursor: pointer;
+}
+
+.owl-controls {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* mouse grab icon */
+.grabbing {
+  cursor: url(../../img/grabbing.png) 8 8, move;
+}
+
+/* fix */
+.owl-carousel .owl-wrapper,
+.owl-carousel .owl-item {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -175,9 +251,56 @@ body {
   padding-top: 97px;
 }
 
+.slider__wrap {
+  text-align: justify;
+  line-height: 0;
+  font-size: 1px;
+  zoom: 1;
+  text-align-last: justify;
+}
+
+.slider__wrap:after {
+  width: 100%;
+  height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+  content: '';
+  display: inline-block;
+}
+
 .slider__title {
   text-align: center;
   font-weight: bold;
   font-size: 22px;
   color: #333333;
+  margin-bottom: 36px;
+}
+
+.slider__item {
+  display: inline-block;
+  width: 32%;
+  line-height: normal;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.owl-carousel__item {
+  width: 100%;
+  background-color: #e7e7e7;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  height: 400px;
+}
+
+.owl-carousel__item--step1 {
+  background-image: url(../../img/slider1.jpg);
+}
+
+.owl-carousel__item--step2 {
+  background-image: url(../../img/slider2.jpg);
+}
+
+.owl-carousel__item--step3 {
+  background-image: url(../../img/slider3.jpg);
 }
