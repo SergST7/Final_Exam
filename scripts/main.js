@@ -11592,7 +11592,8 @@ $(document).ready(function () {
     var carouselSettings = {		// Most important owl features
         items: 2,
         singleItem: true,
-        itemsScaleUp: false,
+        itemsScaleUp: true,
+
 
         //Basic Speeds
         slideSpeed: 200,
@@ -11604,8 +11605,9 @@ $(document).ready(function () {
         stopOnHover: true,
 
         //Pagination
-        pagination: true,
+        pagination: false,
         paginationNumbers: false,
+        navigation : true,
 
         // Responsive
         responsive: true,
