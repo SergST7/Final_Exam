@@ -11,19 +11,31 @@
 /* Styling Next and Prev buttons */
 
 .owl-theme .owl-controls .owl-buttons div{
-	color: #FFF;
+	/*color: #ff686b;*/
 	display: inline-block;
+	width: 30px;
+	height: 55px;
 	zoom: 1;
-	*display: inline;/*IE7 life-saver */
-	margin: 5px;
-	padding: 3px 10px;
-	font-size: 12px;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	background: #869791;
-	filter: Alpha(Opacity=50);/*IE7 fix*/
-	opacity: 0.5;
+	position: absolute;
+	top: 153px;
+	/**display: inline;!*IE7 life-saver *!*/
+	/*margin: 5px;*/
+	/*padding: 3px 10px;*/
+	font-size: 0;
+	/*-webkit-border-radius: 30px;*/
+	/*-moz-border-radius: 30px;*/
+	/*border-radius: 30px;*/
+	background: url(../../img/control-slider.png) no-repeat;
+	/*filter: Alpha(Opacity=50);!*IE7 fix*!*/
+	/*opacity: 0.5;*/
+}
+.owl-theme .owl-controls .owl-buttons .owl-prev{
+	background-position: left;
+	left: 21px
+}
+.owl-theme .owl-controls .owl-buttons .owl-next{
+	background-position: right;
+	right: 21px;
 }
 /* Clickable class fix problem with hover on touch devices */
 /* Use it for non-touch hover action */

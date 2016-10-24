@@ -24,6 +24,7 @@ $headFontWhite: #fff
 @import reset
 @import fonts
 @import owl.carousel
+@import owl.theme
 
 *
   -webkit-box-sizing: border-box
@@ -63,6 +64,7 @@ body
 
   &__login-box
     float: right
+
   &__login
     display: inline-block
     font-size: 14px
@@ -84,7 +86,6 @@ body
     margin-bottom: 27px
     line-height: 60px
 
-
   &__text
     text-align: center
     font-size: 24px
@@ -102,7 +103,6 @@ body
 
 .slider
   padding-top: 97px
-
   &__wrap
     text-align: justify
     line-height: 0
@@ -111,7 +111,7 @@ body
     text-align-last: justify
     &:after
       width: 100%
-      height: 0px
+      height: 0
       visibility: hidden
       overflow: hidden
       content: ''
@@ -133,21 +133,62 @@ body
 
 .owl-carousel
   &__item
+    position: relative
     width: 100%
     background-color: #e7e7e7
-    background-position: center center
+    background-position: center
     background-repeat: no-repeat
     border-radius: 5px
     height: 400px
+    padding: 229px 20px 0
+    &-title
+      margin-top: 15px
+      font-size: 24px
+      text-align: left
+      text-align-last: left
+    &-txt
+      margin-top: 13px
+      font-family: 'roboto'
+      font-size: 14px
+      line-height: 16px
+      text-align-last: left
+    &-link
+      @extend .header__btn
+      padding: 5px 11px 4px 15px
+      border-radius: 10px
+      font-size: 10px
+      letter-spacing: 2px
+      text-transform: uppercase
+      &--step2
+        margin-top: 30px
+
     &--step1
       background-image: url(../../img/slider1.jpg)
+      background-position: -190px -20px
+      background-size: 220%
     &--step2
       background-image: url(../../img/slider2.jpg)
+      background-position: -160px -16px
+      background-size: 220%
     &--step3
       background-image: url(../../img/slider3.jpg)
+      background-position: -181px -26px
+      background-size: 220%
 
-
-
+.partners
+  padding-top: 88px
+  &__title
+    @extend .slider__title
+    margin-bottom: 4px
+  &__list
+    //@extend .slider__wrap
+  &__item
+    //display: inline-block
+    width: 25%
+    float: left
+    text-align: center
+    &-img
+      border-radius: 50%
 
 
 
