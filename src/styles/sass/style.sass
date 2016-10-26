@@ -2,13 +2,12 @@ $btnRed: #ff4e50
 $headFontBlack: #333333
 $headFontWhite: #fff
 
-
 // Центрирование блока по горизонтали и по вертикали
 =vcenter
   position: absolute
   top: 50%
   left: 50%
-  +translate(-50%,-50%)
+  transform: translate(-50%, -50%)
 
 =clr
   &:after
@@ -25,6 +24,7 @@ $headFontWhite: #fff
 @import fonts
 @import owl.carousel
 @import owl.theme
+@import media
 
 *
   -webkit-box-sizing: border-box
@@ -40,7 +40,7 @@ body
 .wrapper
   margin: 0 auto
   max-width: 940px
-
+  min-width: 320px
 
 .header
   max-width: 1440px
@@ -52,13 +52,12 @@ body
 
   &__logo
     float: left
-    &>a
+    & > a
       display: block
       font-size: 21px
       text-decoration: none
       text-transform: uppercase
       color: $headFontWhite
-      //font-family: 'montserrat', sans-serif
       font-weight: bold
       margin-top: 9px
 
@@ -70,9 +69,8 @@ body
     font-size: 14px
     text-decoration: none
     color: $headFontWhite
-    //font-family: 'montserrat', sans-serif
     font-weight: bold
-    padding: 8px  16px
+    padding: 8px 16px
   &__signup
     @extend .header__login
     border: 2px solid $headFontWhite
@@ -177,25 +175,371 @@ body
 
 .partners
   padding-top: 88px
+  text-align: center
   &__title
     @extend .slider__title
-    margin-bottom: 4px
+    margin-bottom: 35px
   &__list
-    //@extend .slider__wrap
+    margin-bottom: 37px
+  //@extend .slider__wrap
   &__item
     //display: inline-block
     width: 25%
+    //padding-right: 20px
+    padding: 0 10px
     float: left
     text-align: center
+    a
+      text-decoration: none
+      display: block
+    &-imgwrapp
+      width: 120px
+      margin: 0 auto
+      position: relative
     &-img
       border-radius: 50%
+    &-ico
+      position: absolute
+      width: 40px
+      height: 40px
+      bottom: -1px
+      right: -4px
+      &--tv
+        background: url("../../img/ico1.png")
+      &--tea
+        background: url("../../img/ico2.png")
+      &--chem
+        background: url("../../img/ico3.png")
+      &--fly
+        background: url("../../img/ico4.png")
+    &-name
+      font-size: 14px
+      margin: 15px 0
+      color: $headFontBlack
+    &-txt
+      font-family: 'roboto'
+      font-size: 14px
+      color: #666666
+      line-height: 16px
+  &__others
+    display: inline-block
+    margin-bottom: 50px
+    color: $btnRed
+    border: 2px solid $btnRed
+    border-radius: 20px
+    text-decoration: none
+    font-size: 14px
+    padding: 11px 29px 9px
 
+.activity
+  padding-top: 50px
+  &__title
+    @extend .partners__title
 
+.grid
+  max-width: 940px
+  margin-bottom: 79px
+  &__sizer
+    width: 32%
+  &__gutter-sizer
+    width: 2%
 
+  &__item
+    margin-bottom: 20px
+    height: 310px
+    width: 32%
+    float: left
+    background-color: darkgray
+    border-radius: 5px
+    overflow: hidden
 
+    &--width2
+      width: 66%
+    &-link
+      position: relative
+      display: block
+      width: 100%
+      height: 100%
+      background-repeat: no-repeat
+      background-position: center
+      background-size: cover
+    &-title
+      +vcenter
+      text-align: center
+      color: $headFontWhite
+      font-size: 22px
+      text-transform: capitalize
+      font-weight: bold
+      text-shadow: 1px 1px 2px black, 0 0 2px gray
 
+.search
+  text-align: center
+  margin-bottom: 98px
+  &__title
+    font-family: 'roboto'
+    font-size: 18px
+    color: $headFontBlack
+    margin-bottom: 39px
 
+  &__input
+    width: 240px
+    height: 40px
+    padding-left: 13px
+    border-radius: 5px
+    font-size: 14px
+    font-family: 'roboto'
+    color: #999999
+  &__btn
+    @extend .header__btn
+    border: none
+    font-weight: bold
+    font-family: 'montserrat'
+    margin-left: 5px
+    cursor: pointer
+    outline: none
 
+.footer
+  font-family: 'montserrat'
+  font-size: 16px
+  font-weight: bold
+  border-top: 4px solid $btnRed
+  padding: 38px 0
+  a
+    text-decoration: none
+  &__logo
+    display: inline-block
+    vertical-align: top
+    a
+      color: $btnRed
+      font-size: 16px
+      letter-spacing: 0.8px
+  &__designed
+    display: inline-block
+    float: right
+    width: 110px
+    height: 45px
+    background: url('../../img/logo-design.png') no-repeat bottom
+    text-transform: uppercase
+    font-size: 10px
+    color: #cccccc
+    text-align: right
+    letter-spacing: 1px
 
+.nav
+  margin-left: 91px
+  vertical-align: top
+  display: inline-block
+  &__title
+    color: $headFontBlack
+    font-size: 14px
+    margin-bottom: 15px
+    text-align: left
+  &__item
+    margin-bottom: 8px
 
+  &__link
+    font-family: 'roboto'
+    font-size: 14px
+    color: #666666
+    margin-bottom: 5px
 
+@media screen and (max-width: 767px)
+  .wrapper
+    padding: 0 3%
+  .header
+    padding-top: 20px
+    height: 540px
+    background-position: -425px -13px
+    background-size: 358%
+    &__login-box
+      float: none
+      margin: 0 auto
+      padding-right: 18px
+    &__logo
+      float: none
+      margin-top: 119px
+    &__title
+      font-size: 30px
+      margin-top: 28px
+      margin-bottom: 10px
+      line-height: 36px
+    &__text
+      font-size: 18px
+      padding: 0 32px
+      margin-bottom: 18px
+      line-height: 20px
+    &__btn
+      padding: 13px 51px
+  .slider
+    padding-top: 36px
+    &__title
+      margin-bottom: 16px
+    &__item
+      display: block
+      width: 100%
+  .owl-carousel
+    &__item
+      height: 240px
+      padding: 69px 20px 0
+      &-link
+        padding: 5px 11px 4px 15px
+      &--step1
+        background-position: -64px -28px
+        background-size: 137%
+      &--step2
+        background-position: -24px -15px
+        background-size: 130%
+      &--step3
+        background-position: -45px -15px
+        background-size: 130%
+  .owl-controls
+    .owl-buttons
+      display: none
+  .partners
+    padding-top: 27px
+    &__list
+      margin-bottom: -1px
+    &__title
+      padding-right: 7px
+      line-height: 24px
+    &__others
+      padding: 11px 72px 10px
+      margin-bottom: 10px
+    &__item
+      float: none
+      width: 100%
+      margin-bottom: 27px
+      &-txt
+        padding: 0 30px
+
+  .activity
+    padding-top: 26px
+    &__title
+      padding-right: 1px
+
+  .grid
+    margin-bottom: 29px
+    &__sizer
+      width: 100%
+    &__gutter-sizer
+      width: 0
+    &__item
+      width: 100%
+      height: 120px
+      margin-bottom: 10px
+      &--width2
+        width: 100%
+      &-title
+        font-size: 20px
+        font-weight: normal
+  .search
+    margin-bottom: 41px
+    &__title
+      margin-bottom: 16px
+    &__input
+      display: block
+      margin: 0 auto 10px
+      width: 282px
+    &__btn
+      padding: 11px 87px 11px 79px
+
+  .footer
+    padding: 18px 0
+    &__logo
+      display: block
+      text-align: center
+      margin-bottom: 15px
+    &__designed
+      display: block
+      float: none
+      margin: 0 auto
+      text-align: center
+      padding-top: 5px
+  .nav
+    margin: 0 auto
+    display: block
+    text-align: center
+    margin-bottom: 10px
+    &__title
+      text-align: center
+      margin-bottom: 3px
+    &__item
+      display: inline-block
+      margin-right: 7px
+
+@media screen and (min-width: 370px) and (max-width: 767px)
+  .wrapper
+    padding: 0 10%
+  .header
+    background-size: cover
+    background-position: center center
+  .owl-carousel
+    &__item
+      background-position: center
+      background-size: cover
+
+@media screen and (min-width: 768px) and (max-width: 959px)
+  .wrapper
+    padding: 0 10px
+  .header
+    padding-top: 39px
+    &__logo
+      margin-left: 40px
+    &__login-box
+      margin-right: 38px
+  .slider
+    &__title
+      padding-left: 5px
+
+  .owl-carousel
+    &__item
+      padding: 211px 21px 0
+      &--step1
+        background-position: -232px -24px
+        background-size: 281%
+      &--step2
+        padding: 228px 22px 0
+        background-position: -183px -17px
+        background-size: 277%
+      &--step3
+        padding: 211px 25px 0
+        background-position: -199px -24px
+        background-size: 274%
+  .owl-theme
+    .owl-controls
+      .owl-buttons
+        .owl-next, .owl-prev
+          top: 37px
+  .partners
+    &__title
+      padding-left: 0
+      margin-bottom: 5px
+    &__list
+      padding: 0 120px
+      margin-bottom: 12px
+    &__item
+      width: 50%
+      margin: 28px 0
+      &-txt
+        padding: 0 10px
+  .activity
+    &__title
+      margin-bottom: 36px
+  .grid
+    margin-bottom: 76px
+
+  .search
+    &__title
+      margin-bottom: 38px
+
+  .footer
+    &__wrap
+      padding: 0 40px
+    &__designed
+      margin-right: -2px
+      height: 43px
+
+  .nav
+    margin-left: 79px
+    &__title
+      margin-right: 22px

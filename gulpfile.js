@@ -23,7 +23,6 @@ var rigger = require('gulp-rigger');
 var runSequence = require('run-sequence'); //синхронный запуск задач
 
 // var concat = require('gulp-concat');
-// var minify = require('gulp-minify');
 //     babel = require("gulp-babel"),
 //     spritesmith = require('gulp.spritesmith');
 
