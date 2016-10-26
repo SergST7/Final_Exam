@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Final Exam</title>
 	<link rel="stylesheet" href="styles/css/style.css">
 	<script src="scripts/main.js"></script>
@@ -10,13 +11,14 @@
 <header class="header">
 	<div class="wrapper">
 		<div class="clr">
-			<div class="header__logo">
-				<a href="#">URLAUBSGLÜCK</a>
-			</div>
 			<div class="header__login-box">
 				<a href="#" class="header__login">Log in</a>
 				<a href="#" class="header__signup">Sign up</a>
 			</div>
+			<div class="header__logo">
+				<a href="#">URLAUBSGLÜCK</a>
+			</div>
+
 		</div>
 		<h1 class="header__title">Share your<br>
 			holiday dreams</h1>
@@ -89,50 +91,121 @@
 <section class="partners">
 	<div class="wrapper">
 		<h3 class="partners__title">Meet a partner for your best holiday</h3>
-		<ul class="partners__list">
+		<ul class="partners__list clr">
 			<li class="partners__item">
 				<a href="#" class="partners__item-link">
 					<div class="partners__item-imgwrapp">
 						<img src="img/user1.jpg" alt="user1" class="partners__item-img">
-						<i class="partners__item-ico"></i>
-						<h5 class="partners__item-name">Bradley Hunter</h5>
-						<p class="partners__item-txt">Based in Chicago. I love playing tennis and loud music.</p>
+						<i class="partners__item-ico partners__item-ico--tv"></i>
 					</div>
+					<h5 class="partners__item-name">Bradley Hunter</h5>
+					<p class="partners__item-txt">Based in Chicago. I love playing tennis and loud music.</p>
 				</a>
 			</li>
+
+
 			<li class="partners__item">
 				<a href="#" class="partners__item-link">
 					<div class="partners__item-imgwrapp">
 						<img src="img/user2.jpg" alt="user2" class="partners__item-img">
-						<i class="partners__item-ico"></i>
-						<h5 class="partners__item-name">Bradley Hunter</h5>
-						<p class="partners__item-txt">Based in Chicago. I love playing tennis and loud music.</p>
+						<i class="partners__item-ico partners__item-ico--tea"></i>
 					</div>
+					<h5 class="partners__item-name">Heather Walker</h5>
+					<p class="partners__item-txt">I'm a happy person that loves cats and climbing on mountains.</p>
 				</a>
 			</li>
+
 			<li class="partners__item">
 				<a href="#" class="partners__item-link">
 					<div class="partners__item-imgwrapp">
 						<img src="img/user3.jpg" alt="user3" class="partners__item-img">
-						<i class="partners__item-ico"></i>
-						<h5 class="partners__item-name">Bradley Hunter</h5>
-						<p class="partners__item-txt">Based in Chicago. I love playing tennis and loud music.</p>
+						<i class="partners__item-ico partners__item-ico--chem"></i>
 					</div>
+					<h5 class="partners__item-name">Lucas Marsha</h5>
+					<p class="partners__item-txt">I get my inspiration from nature and objects around me.
+						I have a passion to colours, typography and skateboards.</p>
 				</a>
 			</li>
+
 			<li class="partners__item">
 				<a href="#" class="partners__item-link">
 					<div class="partners__item-imgwrapp">
 						<img src="img/user4.jpg" alt="user4" class="partners__item-img">
-						<i class="partners__item-ico"></i>
-						<h5 class="partners__item-name">Bradley Hunter</h5>
-						<p class="partners__item-txt">Based in Chicago. I love playing tennis and loud music.</p>
+						<i class="partners__item-ico partners__item-ico--fly"></i>
 					</div>
+					<h5 class="partners__item-name">Bradley Hunter</h5>
+					<p class="partners__item-txt">Based in Chicago. I love playing tennis and loud music.</p>
 				</a>
 			</li>
 		</ul>
+		<a href="#" class="partners__others">See other partners</a>
 	</div>
 </section>
+<section class="activity">
+	<div class="wrapper">
+		<h3 class="activity__title">Discover holiday activity ideas</h3>
+
+		<div class="grid clr"></div>
+		<h3 class="activity__title">Discover holiday activity ideas</h3>
+
+		<form class="search">
+			<h3 class="search__title">Hi! What are your holiday interests?</h3>
+			<input type="text" class="search__input" placeholder="Enter your interests">
+			<input type="submit" class="search__btn" value="Search partners">
+		</form>
+
+	</div>
+</section>
+<footer class="footer">
+	<div class="wrapper footer__wrap">
+		<div class="footer__logo">
+			<a href="#">URLAUBSGLÜCK</a>
+		</div>
+		<ul class="nav">
+			<h5 class="nav__title">Company</h5>
+			<li class="nav__item">
+				<a href="#" class="nav__link">About</a>
+			</li>
+			<li class="nav__item">
+				<a href="#" class="nav__link">Contacts</a>
+			</li>
+			<li class="nav__item">
+				<a href="#" class="nav__link">Press</a>
+			</li>
+			<li class="nav__item">
+				<a href="#" class="nav__link">Blog</a>
+			</li>
+		</ul>
+		<ul class="nav">
+			<h5 class="nav__title">Partners</h5>
+		</ul>
+
+		<a href="#" class="footer__designed">designed by</a>
+
+	</div>
+</footer>
+
+
+<script type="text/template" id="fotoTmpl">
+	<div class="grid__sizer"></div>
+	<div class="grid__gutter-sizer"></div>
+	<% if (hits.length >= 8) { %>
+	<% for (var i=0; i<7; i++) { %>
+	<% if (i == 4 || i==5) { %>
+	<div class="grid__item grid__item--width2">
+		<% } else { %>
+		<div class="grid__item">
+			<% } %>
+			<a href="<%=hits[i].webformatURL%>" class="grid__item-link" target="blank"
+			   style="background-image: url(<%= hits[i].webformatURL %>)">
+				<h4 class="grid__item-title"><%=hits[i].tags%></h4>
+			</a>
+		</div>
+		<% } %>
+		<% } else { %>
+		<h3 class="activity__title">No results</h3>
+		<% }; %>
+</script>
 
 </body>
 </html>
