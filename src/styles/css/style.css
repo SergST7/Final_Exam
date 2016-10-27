@@ -62,6 +62,52 @@ table {
   border-spacing: 0;
 }
 
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-ico1 {
+  background-image: url(../../img/sprite.png);
+  background-position: 0px -40px;
+  width: 40px;
+  height: 40px;
+}
+
+.icon-ico2 {
+  background-image: url(../../img/sprite.png);
+  background-position: -40px -40px;
+  width: 40px;
+  height: 40px;
+}
+
+.icon-ico3 {
+  background-image: url(../../img/sprite.png);
+  background-position: 0px 0px;
+  width: 41px;
+  height: 40px;
+}
+
+.icon-ico4 {
+  background-image: url(../../img/sprite.png);
+  background-position: -41px 0px;
+  width: 41px;
+  height: 40px;
+}
+
 @font-face {
   font-family: 'montserrat';
   src: url("../../fonts/montserrat-bold-webfont.eot");
@@ -477,22 +523,6 @@ body {
   height: 40px;
   bottom: -1px;
   right: -4px;
-}
-
-.partners__item-ico--tv {
-  background: url("../../img/ico1.png");
-}
-
-.partners__item-ico--tea {
-  background: url("../../img/ico2.png");
-}
-
-.partners__item-ico--chem {
-  background: url("../../img/ico3.png");
-}
-
-.partners__item-ico--fly {
-  background: url("../../img/ico4.png");
 }
 
 .partners__item-name {

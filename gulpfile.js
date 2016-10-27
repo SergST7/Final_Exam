@@ -21,10 +21,11 @@ var minifyCss = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var rigger = require('gulp-rigger');
 var runSequence = require('run-sequence'); //синхронный запуск задач
+var spritesmith = require('gulp.spritesmith');// готовим спрайты
 
 // var concat = require('gulp-concat');
 //     babel = require("gulp-babel"),
-//     spritesmith = require('gulp.spritesmith');
+
 
 //  объект с данными о путях
 var PATHS = {
@@ -38,7 +39,7 @@ var PATHS = {
             'src/scripts/lodash.js',
             'src/scripts/main.js'
         ],
-        images: 'src/img/**/*.*',
+        images: 'src/img/*.*',
         fonts: 'src/fonts/**/*.*'
     },
     build: {
@@ -97,6 +98,18 @@ gulp.task('watch', ['browser-sync'], function () {
 
 //BUILD TASKS
 
+//сборка спрайтов
+gulp.task('sprite', function () {
+    var spriteData = gulp.src('src/img/sprite/*.png').pipe(spritesmith({
+        imgName: 'sprite.png',
+        cssName: '_sprite.css',
+        imgPath: '../../img/sprite.png'
+    }));
+    spriteData.img.pipe(gulp.dest('src/img/'));
+    spriteData.css.pipe(gulp.dest('src/styles/sass/'));
+
+});
+
 // задача по сборке FONTS
 gulp.task('fonts', function () {
     gulp.src(PATHS.src.fonts)
@@ -148,9 +161,9 @@ gulp.task('scripts', function () {
     return gulp.src(PATHS.src.scripts)
         .pipe(plumber())
         .pipe(rigger()) //Прогоним через rigger
-        // .pipe(sourcemaps.init()) //Инициализируем sourcemap
-        // .pipe(uglify()) //минификация  js
-        // .pipe(sourcemaps.write()) //Пропишем карты
+        .pipe(sourcemaps.init()) //Инициализируем sourcemap
+        .pipe(uglify()) //минификация  js
+        .pipe(sourcemaps.write()) //Пропишем карты
         .pipe(gulp.dest(PATHS.build.scripts))
         .pipe(browserSync.reload({stream: true})); // перезагрузим сервер
 });
@@ -158,6 +171,6 @@ gulp.task('scripts', function () {
 // задача сборки проекта, до запуска build будут выполнены задачи из массива
 gulp.task('build', function () {
     runSequence('clean', 'sass',
-        ['fonts', 'html', 'styles', 'images', 'scripts']
+        ['fonts', 'html', 'styles', 'sprite', 'images', 'scripts']
     );
 });
