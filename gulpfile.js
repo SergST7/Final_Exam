@@ -124,6 +124,15 @@ gulp.task('html', function () {
         .pipe(browserSync.reload({stream: true})); // перезагрузим сервер
 });
 
+
+// задача по сборке js для IE9
+gulp.task('ie9', function () {
+    gulp.src(['src/scripts/html5shiv.js', 'src/scripts/css3-mediaqueries.js']) //Выберем файлы по нужному пути
+        .pipe(plumber())
+        .pipe(gulp.dest('build/scripts/')) ;//Переносим их в папку build
+
+});
+
 // задача по сборке картинок
 gulp.task('images', function () {
     return gulp.src(PATHS.src.images)
@@ -171,6 +180,6 @@ gulp.task('scripts', function () {
 // задача сборки проекта, до запуска build будут выполнены задачи из массива
 gulp.task('build', function () {
     runSequence('clean', 'sass',
-        ['fonts', 'html', 'styles', 'sprite', 'images', 'scripts']
+        ['fonts', 'html', 'styles', 'sprite', 'images', 'scripts', 'ie9']
     );
 });

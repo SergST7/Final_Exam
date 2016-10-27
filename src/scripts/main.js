@@ -1,4 +1,4 @@
-//= parts/_jquery-3.1.0.js
+//= parts/_jquery.js
 ;
 //= parts/_RezigTmpl.js
 ;
@@ -16,21 +16,29 @@ $(document).ready(function () {
     // var searchStr = $('#search').val().trim();
     function getimage(q) {
         var URL = 'https://pixabay.com/api/?key=' + APIkey + '&q=' + q + '&image_type=photo';
-        $.ajax({
-            url: URL,
 
-            error: function (e) {
-                console.log(e);
-                alert('Сервер  не отвечает')
-            },
-
-            success: function (data) {
+        var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+        var xhr = new XHR();
+        xhr.open('GET', URL, true);
+        xhr.onload = function() {
+            var data = JSON.parse(this.responseText);
+            if (parseInt(data.totalHits) > 0) {
                 console.log(data);
                 render('fotoTmpl', data, '.grid');
                 masonryInit();
+            } else {
+                console.log('No results');
             }
-        });
-    }
+        };
+        xhr.onerror = function() {
+            alert('Сервер  не отвечает')
+            console.log('Ошибка ' + this.status);
+        };
+        xhr.send();
+
+
+        }
+
 
     function render(id, obj, parent) {
         var $parent = $(parent);
