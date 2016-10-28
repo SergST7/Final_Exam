@@ -22,6 +22,8 @@ var uglify = require('gulp-uglify');
 var rigger = require('gulp-rigger');
 var runSequence = require('run-sequence'); //синхронный запуск задач
 var spritesmith = require('gulp.spritesmith');// готовим спрайты
+var ghPages = require('gulp-gh-pages'); //deploy build folder to gh-pages
+
 
 // var concat = require('gulp-concat');
 //     babel = require("gulp-babel"),
@@ -90,6 +92,11 @@ gulp.task('watch', ['browser-sync'], function () {
     gulp.watch([PATHS.watch.images], ['images']);
 });
 
+//deploy build to git
+gulp.task('deploy', function() {
+    return gulp.src('build/**/*')
+        .pipe(ghPages());
+});
 
 //BUILD TASKS
 
