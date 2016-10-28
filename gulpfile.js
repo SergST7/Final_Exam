@@ -33,10 +33,6 @@ var PATHS = {
         html: 'src/*.html',
         styles: 'src/styles/css/*.css',
         scripts: [
-            'src/scripts/jquery-3.1.0.js',
-            'src/scripts/owl.carousel.js',
-            'src/scripts/data.json.js',
-            'src/scripts/lodash.js',
             'src/scripts/main.js'
         ],
         images: 'src/img/*.*',
@@ -57,7 +53,6 @@ var PATHS = {
         images: 'src/img/**/*'
     }
 };
-
 
 //Очистка папки
 gulp.task('clean', function () {
@@ -133,6 +128,14 @@ gulp.task('ie9', function () {
 
 });
 
+// задача по сборке css для ie8
+gulp.task('ie8', function () {
+    gulp.src('src/styles/ie8/ie8.css') //Выберем файлы по нужному пути
+        .pipe(plumber())
+        .pipe(gulp.dest('build/styles/ie8/')) ;//Переносим их в папку build
+
+});
+
 // задача по сборке картинок
 gulp.task('images', function () {
     return gulp.src(PATHS.src.images)
@@ -156,7 +159,7 @@ gulp.task('styles', function () {
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(autoprefixer({
-            browsers: ['last 10 versions', 'ie >= 8'],
+            browsers: ['last 15 versions', 'ie >= 8'],
             cascade: false
         }))
         .pipe(minifyCss({compatibility: 'ie8'}))
@@ -180,6 +183,6 @@ gulp.task('scripts', function () {
 // задача сборки проекта, до запуска build будут выполнены задачи из массива
 gulp.task('build', function () {
     runSequence('clean', 'sass',
-        ['fonts', 'html', 'styles', 'sprite', 'images', 'scripts', 'ie9']
+        ['fonts', 'html', 'styles', 'sprite', 'images', 'scripts', 'ie9', 'ie8']
     );
 });

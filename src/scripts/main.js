@@ -1,13 +1,21 @@
-//= parts/_jquery.js
+//= parts/jquery.js
 ;
-//= parts/_RezigTmpl.js
+//= parts/RezigTmpl.js
 ;
-//= parts/_owl.carousel.js
+//= parts/owl.carousel.js
 ;
-//= parts/_masonry.pkgd.js
+//= parts/masonry.pkgd.js
 ;
 
 $(document).ready(function () {
+
+    if (!window.console) {
+        console = {
+            log: function () {
+            }
+        }
+    }
+    ;
 
     var flag = 0;
 
@@ -20,7 +28,7 @@ $(document).ready(function () {
         var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
         var xhr = new XHR();
         xhr.open('GET', URL, true);
-        xhr.onload = function() {
+        xhr.onload = function () {
             var data = JSON.parse(this.responseText);
             if (parseInt(data.totalHits) > 0) {
                 console.log(data);
@@ -30,15 +38,12 @@ $(document).ready(function () {
                 console.log('No results');
             }
         };
-        xhr.onerror = function() {
-            alert('Сервер  не отвечает')
+        xhr.onerror = function () {
+            alert('Сервер  не отвечает');
             console.log('Ошибка ' + this.status);
         };
         xhr.send();
-
-
-        }
-
+    }
 
     function render(id, obj, parent) {
         var $parent = $(parent);
@@ -92,8 +97,11 @@ $(document).ready(function () {
 
     function searchQuery(e) {
         e.preventDefault();
-       var q = $('.search__input').val().trim();
-        if (q){getimage(q)}
+        var q = $('.search__input').val();
+        q = $.trim(q);
+        if (q) {
+            getimage(q)
+        }
         else return;
     }
 
