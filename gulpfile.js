@@ -196,9 +196,12 @@ gulp.task('scripts', function () {
     return gulp.src(PATHS.src.scripts)
         .pipe(plumber())
         .pipe(rigger()) //Прогоним через rigger
-        .pipe(sourcemaps.init()) //Инициализируем sourcemap
-        .pipe(uglify()) //минификация  js
-        .pipe(sourcemaps.write()) //Пропишем карты
+        // .pipe(sourcemaps.init()) //Инициализируем sourcemap
+        // .pipe(uglify({
+        //     compress: false,
+        //     mangle: false
+        // })) //минификация  js
+        // .pipe(sourcemaps.write()) //Пропишем карты
         .pipe(gulp.dest(PATHS.build.scripts))
         .pipe(browserSync.reload({stream: true})); // перезагрузим сервер
 });

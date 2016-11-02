@@ -62,51 +62,50 @@ table {
   border-spacing: 0;
 }
 
-/*.no-svg .icon:before {*/
-/*background-image: url("../sprite.png");*/
-/*}*/
-.icon-ico1 {
-  font-size: 10px;
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
   display: inline-block;
-  background-image: url("../../img/sprite.svg");
-  background-repeat: no-repeat;
-  background-size: 4.1em 16em;
-  background-position: 0em 0em;
-  width: 4em;
-  height: 4em;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-ico1 {
+  background-image: url(../../img/sprite.png);
+  background-position: 0px -40px;
+  width: 40px;
+  height: 40px;
 }
 
 .icon-ico2 {
-  font-size: 10px;
-  display: inline-block;
-  background-image: url("../../img/sprite.svg");
-  background-repeat: no-repeat;
-  background-size: 4.1em 16em;
-  background-position: 0em -4em;
-  width: 4em;
-  height: 4em;
+  background-image: url(../../img/sprite.png);
+  background-position: -40px -40px;
+  width: 40px;
+  height: 40px;
 }
 
 .icon-ico3 {
-  font-size: 10px;
-  display: inline-block;
-  background-image: url("../../img/sprite.svg");
-  background-repeat: no-repeat;
-  background-size: 4.1em 16em;
-  background-position: 0em -8em;
-  width: 4.1em;
-  height: 4em;
+  background-image: url(../../img/sprite.png);
+  background-position: 0px 0px;
+  width: 41px;
+  height: 40px;
 }
 
 .icon-ico4 {
-  font-size: 10px;
-  display: inline-block;
-  background-image: url("../../img/sprite.svg");
-  background-repeat: no-repeat;
-  background-size: 4.1em 16em;
-  background-position: 0em -12em;
-  width: 4.1em;
-  height: 4em;
+  background-image: url(../../img/sprite.png);
+  background-position: -41px 0px;
+  width: 41px;
+  height: 40px;
 }
 
 @font-face {
@@ -663,7 +662,7 @@ body {
   float: right;
   width: 110px;
   height: 45px;
-  background: url("../../img/logo.svg") no-repeat bottom;
+  background: url("../../img/logo-design.png") no-repeat bottom;
   text-transform: uppercase;
   font-size: 10px;
   color: #cccccc;
@@ -941,5 +940,58 @@ body {
   }
   .nav__title {
     margin-right: 22px;
+  }
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  /*.no-svg .icon:before {*/
+  /*background-image: url("../sprite.png");*/
+  /*}*/
+  .icon-ico1 {
+    font-size: 10px;
+    display: inline-block;
+    background-image: url("../../img/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 4.1em 16em;
+    background-position: 0em 0em;
+    width: 4em;
+    height: 4em;
+  }
+  .icon-ico2 {
+    font-size: 10px;
+    display: inline-block;
+    background-image: url("../../img/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 4.1em 16em;
+    background-position: 0em -4em;
+    width: 4em;
+    height: 4em;
+  }
+  .icon-ico3 {
+    font-size: 10px;
+    display: inline-block;
+    background-image: url("../../img/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 4.1em 16em;
+    background-position: 0em -8em;
+    width: 4.1em;
+    height: 4em;
+  }
+  .icon-ico4 {
+    font-size: 10px;
+    display: inline-block;
+    background-image: url("../../img/sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 4.1em 16em;
+    background-position: 0em -12em;
+    width: 4.1em;
+    height: 4em;
+  }
+  .header {
+    background: url(../../img/header@2x.jpg) no-repeat center;
+    background-size: 1400px 700px;
+  }
+  .footer__designed {
+    background: url("../../img/logo.svg");
   }
 }
