@@ -23,9 +23,8 @@ var rigger = require('gulp-rigger');
 var runSequence = require('run-sequence'); //синхронный запуск задач
 var spritesmith = require('gulp.spritesmith');// готовим спрайты
 var ghPages = require('gulp-gh-pages'); //deploy build folder to gh-pages
+var svgSprite = require("gulp-svg-sprites");  //svg sprite
 
-
-// var concat = require('gulp-concat');
 //     babel = require("gulp-babel"),
 
 
@@ -112,6 +111,23 @@ gulp.task('sprite', function () {
 
 });
 
+
+gulp.task('spriteSVG', function () {
+    return gulp.src('src/img/sprite/*.svg')
+        .pipe(svgSprite({
+            svg: {
+                sprite: "sprite.svg"
+            },
+            templates: {
+                css: require("fs").readFileSync("src/img/sprite/tmpl.css", "utf-8")
+            },
+            svgPath: '../../img/sprite.svg',
+            cssFile: "../styles/sass/_spriteSVG.css",
+            preview: false
+        }))
+        .pipe(gulp.dest("src/img/"));
+});
+
 // задача по сборке FONTS
 gulp.task('fonts', function () {
     gulp.src(PATHS.src.fonts)
@@ -190,6 +206,6 @@ gulp.task('scripts', function () {
 // задача сборки проекта, до запуска build будут выполнены задачи из массива
 gulp.task('build', function () {
     runSequence('clean', 'sass',
-        ['fonts', 'html', 'styles', 'sprite', 'images', 'scripts', 'ie9', 'ie8']
+        ['fonts', 'html', 'styles', 'sprite', 'spriteSVG', 'images', 'scripts', 'ie9', 'ie8']
     );
 });
